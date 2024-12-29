@@ -11,6 +11,7 @@ on:
       - 'feature/**'            # 「feature/」で始まるブランチのみ対象
     paths: 
       - 'src/**/*.py'           # 「src」ディレクトリ以下のPythonファイルのみ対象
+  workflow_dispatch:
 
 jobs:
   pytest:
