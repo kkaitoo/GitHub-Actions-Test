@@ -2,13 +2,17 @@ name: Run workflow_run after Pytest
 
 on: 
   workflow_run:
-    workflows: ["pytest"]
-    types: [completed]
+    workflows: [RunPytest]
+    types: 
+      - completed
   workflow_dispatch:
 
 jobs:
   hello-workflow-run:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Hello This is workflow_run"
-      - uses: actions/checkout@v4
+      - name: Print message
+        run: | 
+          echo "Hello This is workflow_run"
+      - name: Checkout repository
+        uses: actions/checkout@v4
