@@ -2,7 +2,7 @@ name: Run workflow_run after Pytest
 
 on: 
   workflow_run:
-    workflows: ["Run-Pytest"]
+    workflows: [Run-Pytest]
     types: [completed]
   workflow_dispatch:
 
