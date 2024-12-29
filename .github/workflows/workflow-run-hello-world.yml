@@ -1,18 +1,64 @@
-name: Run workflow_run after Pytest
+name: Slack alert after Pytest
 
 on: 
   workflow_run:
-    workflows: [RunPytest]
-    types: 
-      - completed
+    workflows: ["pytest"]
+    types: [completed]
   workflow_dispatch:
 
 jobs:
-  hello-workflow-run:
+  alert-workflow-run:
+    name: Slack alert
     runs-on: ubuntu-latest
     steps:
-      - name: Print message
-        run: | 
-          echo "Hello This is workflow_run"
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: slackapi/slack-github-action@v1.22.0
+        with: 
+            channel-id: "C086RGJ9FH9"
+            payload: |
+              {
+                "attachments": [
+                  {
+                    "color": "#f2c744",
+                    "blocks": [
+                      {
+                        "type": "header",
+                        "text": {
+                          "type": "plain_text",
+                          "text": "Pytest実行完了",
+                          "emoji": true
+                        }
+                      },
+                      {
+                        "type": "rich_text",
+                        "elements": [
+                          {
+                            "type": "rich_text_section",
+                            "elements": [
+                              {
+                                "type": "text",
+                                "text": "srcディレクトリに変更があったためPytestを実行しました。結果を確認してください 🔎"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "type": "rich_text",
+                        "elements": [
+                          {
+                            "type": "rich_text_section",
+                            "elements": [
+                              {
+                                "type": "emoji",
+                                "name": "ghost"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.GITHUB_TOKEN }}
