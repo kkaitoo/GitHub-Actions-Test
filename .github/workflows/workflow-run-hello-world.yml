@@ -1,0 +1,14 @@
+name: Python test udemy
+
+on: 
+  workflow_run:
+    workflows: ["pytest"]
+    types: [completed]
+  workflow_dispatch:
+
+jobs:
+  hello-workflow-run:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Hello This is workflow_run"
+      - uses: actions/checkout@v4
