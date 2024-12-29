@@ -1,6 +1,12 @@
 name: Python test udemy
 
-on: [push, pull_request]
+on: 
+  push: 
+    branches: - 'feature/**' # 「feature/」で始まるブランチのみ対象 
+    paths: - 'src/**/*.py' # 「src」ディレクトリ以下のPythonファイルのみ対象 
+  pull_request: 
+    branches: - 'feature/**' # 「feature/」で始まるブランチのみ対象 
+    paths: - 'src/**/*.py' # 「src」ディレクトリ以下のPythonファイルのみ対象
 
 jobs:
   pytest:
