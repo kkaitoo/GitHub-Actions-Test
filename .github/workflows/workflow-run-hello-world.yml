@@ -1,4 +1,4 @@
-name: Python test udemy
+name: Run workflow_run after Pytest
 
 on: 
   workflow_run:

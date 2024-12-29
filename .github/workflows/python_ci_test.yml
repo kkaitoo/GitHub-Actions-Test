@@ -1,4 +1,4 @@
-name: Python test udemy
+name: Run Pytest
 
 on: 
   push: 
