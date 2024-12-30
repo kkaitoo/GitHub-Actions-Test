@@ -25,9 +25,7 @@ jobs:
                       "type": "section",
                       "text": {
                         "type": "mrkdwn",
-                        "text": """【${{ env.DATE }} 】
-                        srcディレクトリに変更があったためPytestを実行しました。結果を確認してください 🔎
-                        """
+                        "text": "【${{ env.DATE }} 】¥nsrcディレクトリに変更があったためPytestを実行しました。結果を確認してください 🔎"
                       }
                     }
                   ]
