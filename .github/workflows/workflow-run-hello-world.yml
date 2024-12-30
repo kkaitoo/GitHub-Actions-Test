@@ -23,9 +23,36 @@ jobs:
                         "type": "section",
                         "fields": [
                           {
-                            "type": "plain_text",
+                          "type": "plain_text",
                             "text": "*this is plain_text text*",
-                            "emoji": true
+                          "emoji": true
+                        }
+                      },
+                      {
+                        "type": "rich_text",
+                        "elements": [
+                          {
+                            "type": "rich_text_section",
+                            "elements": [
+                              {
+                                "type": "text",
+                                "text": "srcディレクトリに変更があったためPytestを実行しました。結果を確認してください 🔎"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "type": "rich_text",
+                        "elements": [
+                          {
+                            "type": "rich_text_section",
+                            "elements": [
+                              {
+                                "type": "emoji",
+                                "name": "ghost"
+                              }
+                            ]
                           }
                         ]
                       }
@@ -34,4 +61,4 @@ jobs:
                 ]
               }
         env:
-          SLACK_BOT_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
