@@ -11,24 +11,26 @@ jobs:
     name: Slack alert
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
+      - run: echo "DATE=$(date)" >> $GITHUB_ENV
       - uses: slackapi/slack-github-action@v1.22.0
         with: 
-            channel-id: "C086RGJ9FH9"
-            payload: |
-              {
-                "attachments": [
-                  {
-                    "blocks": [
-                      {
-                        "type": "section",
-                        "text": {
-                          "type": "mrkdwn",
-                          "text": "srcディレクトリに変更があったためPytestを実行しました。結果を確認してください 🔎"
-                        }
+          channel-id: "C086RGJ9FH9"
+          payload: |
+            {
+              "attachments": [
+                {
+                  "blocks": [
+                    {
+                      "type": "section",
+                      "text": {
+                        "type": "mrkdwn",
+                        "text": "${{ env.DATE }} srcディレクトリに変更があったためPytestを実行しました。結果を確認してください 🔎"
                       }
-                    ]
-                  }
-                ]
-              }
+                    }
+                  ]
+                }
+              ]
+            }
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
