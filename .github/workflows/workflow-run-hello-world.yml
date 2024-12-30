@@ -2,7 +2,7 @@ name: Slack alert after Pytest
 
 on: 
   workflow_run:
-    workflows: ["pytest"]
+    workflows: ["RunPytest"]
     types: [completed]
   workflow_dispatch:
 
