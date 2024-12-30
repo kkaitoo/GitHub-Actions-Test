@@ -21,26 +21,9 @@ jobs:
                     "blocks": [
                       {
                         "type": "section",
-                        "fields": [
-                          {
-                            "type": "plain_text",
-                            "text": "*this is plain_text text*",
-                            "emoji": true
-                          }
-                        ]
-                      },
-                      {
-                        "type": "section",
                         "text": {
                           "type": "mrkdwn",
                           "text": "srcディレクトリに変更があったためPytestを実行しました。結果を確認してください 🔎"
-                        }
-                      },
-                      {
-                        "type": "section",
-                        "text": {
-                          "type": "mrkdwn",
-                          "text": ":ghost:"
                         }
                       }
                     ]
